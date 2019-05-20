@@ -20,13 +20,15 @@ import com.klm.backend.klmbackend.service.AirportService;
 @RestController
 public class MainController {
 
-	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(MainController.class);
 
 	@Autowired
 	AirportService airportService;
 
 	@RequestMapping(value = "/airports", method = GET, params = "term")
-	public AirportResponseWrapper getAirportsList(@RequestParam(value = "lang", defaultValue = "en") String lang,
+	public AirportResponseWrapper getAirportsList(
+			@RequestParam(value = "lang", defaultValue = "en") String lang,
 			@RequestParam("term") String term) throws AirportServiceException {
 
 		logger.info("/airports endpoint");
@@ -37,7 +39,8 @@ public class MainController {
 	@RequestMapping(value = "/fares/{origin}/{destination}", method = GET)
 	public Fare getFareDetails(@PathVariable("origin") String origin,
 			@PathVariable("destination") String destination,
-			@RequestParam(value = "currency", defaultValue = "EUR") String currency) throws AirportServiceException {
+			@RequestParam(value = "currency", defaultValue = "EUR") String currency)
+			throws AirportServiceException {
 
 		logger.info("/fares endoint");
 
