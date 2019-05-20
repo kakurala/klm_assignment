@@ -31,21 +31,6 @@ public class AirportServiceImpl implements AirportService {
 
 	private static final Logger logger = LoggerFactory.getLogger(AirportServiceImpl.class);
 
-	@Value("${oauth.client.id}")
-	private String clientId;
-
-	@Value("${oauth.client.secret}")
-	private String clientSecret;
-
-	@Value("${oauth.client.scopes}")
-	private String scopes;
-
-	@Value("${oauth.client.grant_type}")
-	private String grant_type;
-
-	@Value("${oauth.token.url}")
-	private String token_url;
-
 	@Value("${api.airport.endpoint}")
 	private String airports_end_point;
 
@@ -53,13 +38,13 @@ public class AirportServiceImpl implements AirportService {
 	private String fares_end_point;
 
 	@Autowired
-	RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 
 	@Autowired
 	private AirportHelperAsyncService asyncRestCalls;
 
 	@Autowired
-	OAuthTokenService tokenService;
+	private OAuthTokenService tokenService;
 
 	public AirportResponseWrapper getAirportList(String term, String lang) throws AirportServiceException {
 
@@ -70,11 +55,14 @@ public class AirportServiceImpl implements AirportService {
 		params.put("lang", lang);
 		params.put("access_token", this.tokenService.getToken());
 
-		UriComponents uriComponents = UriComponentsBuilder.fromUriString(airports_end_point).buildAndExpand(params);
+		UriComponents uriComponents = UriComponentsBuilder.fromUriString(airports_end_point)
+				.buildAndExpand(params);
 
-		ResponseEntity<AirportResponseWrapper> airportResponseEntity = restTemplate.exchange(
-				uriComponents.toUri().toString(), HttpMethod.GET, this.buildHttpEntity(), AirportResponseWrapper.class,
-				params);
+		 ResponseEntity < AirportResponseWrapper > airportResponseEntity = restTemplate.exchange(uriComponents.toUri().toString(),
+				 HttpMethod.GET,
+				 this.buildHttpEntity(),
+				 AirportResponseWrapper.class,
+				 params);
 
 		return airportResponseEntity.getBody();
 	}
@@ -89,10 +77,14 @@ public class AirportServiceImpl implements AirportService {
 		params.put("origin", origin);
 		params.put("access_token", this.tokenService.getToken());
 
-		UriComponents uriComponents = UriComponentsBuilder.fromUriString(fares_end_point).buildAndExpand(params);
+		UriComponents uriComponents = UriComponentsBuilder.fromUriString(fares_end_point)
+				.buildAndExpand(params);
 
-		ResponseEntity<Fare> fareResponse = restTemplate.exchange(uriComponents.toUri().toString(), HttpMethod.GET,
-				this.buildHttpEntity(), Fare.class, params);
+		ResponseEntity<Fare> fareResponse = restTemplate.exchange(uriComponents.toUri().toString(), 
+				HttpMethod.GET,
+				this.buildHttpEntity(), 
+				Fare.class, 
+				params);
 
 		if (fareResponse.getStatusCode().value() == HttpStatus.OK.value()) {
 			// make two calls in parallel two fetch Airport details of both

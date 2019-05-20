@@ -71,8 +71,10 @@ public class OAuthTokenService {
 
 		UriComponents uriComponents = UriComponentsBuilder.fromUriString(access_token_url).buildAndExpand(params);
 
-		ResponseEntity<OAuthToken> response = restTemplate.exchange(uriComponents.toUri().toString(), HttpMethod.POST,
-				request, OAuthToken.class);
+		ResponseEntity<OAuthToken> response = restTemplate.exchange(uriComponents.toUri().toString(), 
+				HttpMethod.POST,
+				request, 
+				OAuthToken.class);
 
 		logger.info("new token received = {}", response.getBody().getAccess_token());
 
