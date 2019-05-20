@@ -1,0 +1,19 @@
+<div class="container" *ngIf="data">
+  <h3>Fare Details [{{data?.origin}}-{{data?.destination}}]</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Fare</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{data?.sourceLocation?.description}}</td>
+        <td>{{data?.destLocation?.description}}</td>
+        <td>{{data?.amount}} {{data?.currency}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

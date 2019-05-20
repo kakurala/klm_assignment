@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: KLM_UI
+    
+server:
+  port: 8010
+  
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+  security:
+    enabled: false
+  endpoint:
+    logfile:
+      enabled: true
+
+api:
+  base:
+    url: http://localhost:8080
+  airport:
+    endpoint: ${api.base.url}/airports?term={term}&lang={lang}&access_token={access_token}
+    single: ${api.base.url}/airports/{code}?access_token={access_token}
+  fares:
+    endpoint: ${api.base.url}/fares/{origin}/{destination}?access_token={access_token}
+
+oauth:
+  token:
+    url: ${api.base.url}/oauth/token
+    path: ?grant_type={grant_type}&client_secret={client_secret}&client_id={client_id}&scopes={scopes}
+  client:
+    secret: psw
+    id: travel-api-client
+    grant_type: client_credentials
+    scopes: read write trust
