@@ -1,7 +1,7 @@
 
 `Note 1:  Mock project should be running on 8080 port. In case if it is running on different port then same can be configured in application.yml in klm-server spring-boot module`
 
-`Note 2: If you are settig up the project for the first time then the below step in klm-web/pom.xml should not be commented`
+`Note 2: If you are settig up the project for the first time then the below step in klm-web/pom.xml (line number 39 - 44) should not be commented`
 
 ```
 <execution>
