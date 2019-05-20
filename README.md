@@ -1,7 +1,7 @@
 
 Project setup instructions
 
-`Note:  Mock project should be running on 8080 port. In case if it is running on diffrernt port then same can be configured in application.properties in tutorial-server spring-boot module`
+`Note:  Mock project should be running on 8080 port. In case if it is running on different port then same can be configured in application.yml in klm-server spring-boot module`
 
 ### Instructions ###
 
@@ -11,9 +11,9 @@ Clone the repositoriy to local PC
 
 ` mvn clean install`
 
-Then move to tutorial-server module
+Then move to klm-server module
 
- `cd tutorial-server`
+ `cd klm-server`
 
 Then run the project as spring boot project
  `mvn spring-boot:run`
@@ -21,7 +21,7 @@ Then run the project as spring boot project
 ### OR build and execute jar ##
 `mvn clean install`
 
-`java -jar tutorial-server\target\tutorial-server-0.0.1-SNAPSHOT.jar`
+`java -jar klm-server\target\klm-server-0.0.1-SNAPSHOT.jar`
 
 > Note: change the jar name as per the artifact.
 
@@ -36,14 +36,14 @@ You should see the below page
 
 http://localhost:8010/#/home
 
-![image](https://github.com/kakurala/assignement/blob/master/klm_screen.png)
+![image](https://github.com/kakurala/klm_assignment/blob/master/klm_screen.png)
 
 
 ### Application statistics Dashboard
 
 http://localhost:8010/#/dashboard
 
-![image1](https://github.com/kakurala/assignement/blob/master/klm_stats.png)
+![image1](https://github.com/kakurala/klm_assignment/blob/master/klm_stats.png)
 
 
 
@@ -51,19 +51,19 @@ http://localhost:8010/#/dashboard
 
 Searchable source abd destination fields
 
-![image2](https://github.com/kakurala/assignement/blob/master/klm_typeahead.png)
+![image2](https://github.com/kakurala/klm_assignment/blob/master/klm_typeahead.png)
 
 
 Fare details 
 
-![image3](https://github.com/kakurala/assignement/blob/master/klm_fare_details.png)
+![image3](https://github.com/kakurala/klm_assignment/blob/master/klm_fare_details.png)
 
 
 Loading overlay on Get Fare action
 
-![image4](https://github.com/kakurala/assignement/blob/master/loading_overlay.png)
+![image4](https://github.com/kakurala/klm_assignment/blob/master/loading_overlay.png)
 
 
 Async threads name changed as per requirement
 
-![image5](https://github.com/kakurala/assignement/blob/master/async-tasks-thread.PNG)
+![image5](https://github.com/kakurala/klm_assignment/blob/master/async-tasks-thread.PNG)
